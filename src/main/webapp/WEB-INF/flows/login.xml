@@ -5,15 +5,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
 		http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 	
-	<!-- By default, the first state is the start state. -->
-	<view-state id="register" view="account/registerForm">
-		<transition on="submitRegistration" to="accountAdded"/>
-		<transition on="cancelRegistration" to="cancelRegistration"/>
+	<!-- New customers create a new account before moving forward -->
+	<view-state id="login" view="account/login">
+		<transition on="login" to="loginOk"/>
 	</view-state>
 	
 	<!-- See http://forum.springframework.org/showthread.php?t=51240 -->
-	<!-- See also http://jira.springframework.org/browse/SWF-588 -->
+	<!-- Suppress leading slash to go servlet-relative? (Check docs) -->
 	<!-- View applies only when directly called; calling flows ignore it? -->
-	<end-state id="accountAdded" view="externalRedirect:contextRelative:/home.do"/>
-	<end-state id="cancelRegistration" view="externalRedirect:contextRelative:/home.do"/>
+	<end-state id="loginOk" view="externalRedirect:contextRelative:/home.do"/>
 </flow>
