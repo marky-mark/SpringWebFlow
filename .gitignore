@@ -13,3 +13,4 @@ seller.h2.db
 atlassian-ide-plugin.xml
 build.log
 .DS_Store
+gen-java
